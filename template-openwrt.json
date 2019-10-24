@@ -1,0 +1,51 @@
+{
+  "variables": {
+    "arch_1": "x86",
+    "arch_2": "64",
+    "filesystem": "ext4",
+    "lan_ifname": "eth1",
+    "name_extension": "final",
+    "version": "18.06.4"
+  },
+  "builders":
+  [
+    {
+      "accelerator": "kvm",
+      "boot_command": [
+        "<enter><wait>",
+	"ifdown lan<enter><wait>",
+        "uci del network.lan<enter><wait>",
+        "uci set network.lan=interface<enter><wait>",
+        "uci set network.lan.proto=dhcp<enter><wait>",
+        "uci set network.lan.ifname={{user `lan_ifname`}}<enter><wait>",
+        "uci commit<enter><wait>",
+        "ifup lan<enter><wait>",
+        "exit<enter>"
+      ],
+      "boot_wait": "20s",
+      "disk_image": true,
+      "format": "raw",
+      "iso_checksum": "91e5cdc049b8be250e57e9deb1fecb29f60abccfe09b99a537fcc95398fb3ff7",
+      "iso_checksum_type": "sha256",
+      "iso_url": "https://downloads.openwrt.org/releases/{{user `version`}}/targets/{{user `arch_1`}}/{{user `arch_2`}}/openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-combined-{{user `filesystem`}}.img.gz",
+      "output_directory": "target/{{user `version`}}/{{user `arch`}}",
+      "qemuargs": [
+	["-display", "gtk"],
+        [ "-m", "512M" ],
+	[ "-netdev", "user,id=lan0"],
+        [ "-device", "virtio-net,netdev=lan0" ],
+        [ "-netdev", "user,id=lan1,hostfwd=tcp::{{ .SSHHostPort}}-:22"],
+        [ "-device", "virtio-net,netdev=lan1" ],
+	[ "-netdev", "user,id=lan2"],
+        [ "-device", "virtio-net,netdev=lan2" ]
+      ],
+      "shutdown_command": "poweroff",
+      "ssh_password": "",
+      "ssh_port": "22",
+      "ssh_timeout": "10s",
+      "ssh_username": "root",
+      "type": "qemu",
+      "vm_name": "openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-{{user `filesystem`}}-combined-{{user `name_extension`}}.img"
+    }
+  ]
+}
