@@ -30,7 +30,7 @@
       "iso_url": "https://downloads.openwrt.org/releases/{{user `version`}}/targets/{{user `arch_1`}}/{{user `arch_2`}}/openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-combined-{{user `filesystem`}}.img.gz",
       "output_directory": "target/{{user `version`}}/{{user `arch`}}",
       "qemuargs": [
-	["-display", "gtk"],
+	[ "-display", "gtk"],
         [ "-m", "512M" ],
 	[ "-netdev", "user,id=lan0"],
         [ "-device", "virtio-net,netdev=lan0" ],
@@ -46,6 +46,16 @@
       "ssh_username": "root",
       "type": "qemu",
       "vm_name": "openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-{{user `filesystem`}}-combined-{{user `name_extension`}}.img"
+    }
+  ],
+  "provisioners":
+  [
+    {
+      "environment_vars": [
+	"ROOT_PASSWORD={{user `root_password`}}"
+      ],
+      "script": "scripts/setup_root_account.sh",
+      "type": "shell"
     }
   ]
 }
