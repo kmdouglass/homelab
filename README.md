@@ -17,10 +17,13 @@ sudo usermod -G kvm -a $(whoami)
 
 ## Directions
 
-Assuming that you use [pass] as your password store:
+First, update the key `ssh_public_key_file` in `vars.json` to point to your public SSH key
+file. (By default it is set to `$HOME/.ssh/id_rsa.pub`.
+
+Assuming that you use [pass] as your password store, run the following command to build the image:
 
 ```console
-packer build -var 'root_password=$(pass Anton/root_password)' template-openwrt.json
+packer build -var-file=vars.json -var 'root_password=$(pass Anton/root_password)' template-openwrt.json
 ```
 
 [Packer]: https://www.packer.io/

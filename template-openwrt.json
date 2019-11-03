@@ -51,6 +51,11 @@
   "provisioners":
   [
     {
+      "destination": "/etc/dropbear/authorized_keys",
+      "source": "{{user `ssh_public_key_file`}}",
+      "type": "file"
+    },
+    {
       "environment_vars": [
 	"ROOT_PASSWORD={{user `root_password`}}"
       ],

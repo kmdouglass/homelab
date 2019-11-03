@@ -1,0 +1,3 @@
+{
+  "ssh_public_key_file": "{{env `HOME`}}/.ssh/id_rsa.pub"
+}
