@@ -1,3 +1,6 @@
 {
+  "domain": "local.kponics.com",
+  "hostname": "srv-20191014",
+  "hostname_aliases": "router OpenWrt",
   "ssh_public_key_file": "{{env `HOME`}}/.ssh/id_rsa.pub"
 }

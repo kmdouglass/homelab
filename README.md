@@ -17,8 +17,9 @@ sudo usermod -G kvm -a $(whoami)
 
 ## Directions
 
-First, update the key `ssh_public_key_file` in `vars.json` to point to your public SSH key
-file. (By default it is set to `$HOME/.ssh/id_rsa.pub`.
+The `vars.json` file contains all the variables that are used by the provisioners with the
+exception of secrets. (Secrets are passed to Packer via `-var` options.) Edit this file to
+fine-tune the image.
 
 Assuming that you use [pass] as your password store, run the following command to build the image:
 

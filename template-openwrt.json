@@ -57,6 +57,9 @@
     },
     {
       "environment_vars": [
+	"DOMAIN={{user `domain`}}",
+	"HOSTNAME={{user `hostname`}}",
+	"HOSTNAME_ALIASES={{user `hostname_aliases`}}",
 	"ROOT_PASSWORD={{user `root_password`}}"
       ],
       "script": "scripts/setup_root_account.sh",
