@@ -24,7 +24,7 @@ fine-tune the image.
 Assuming that you use [pass] as your password store, run the following command to build the image:
 
 ```console
-packer build -var-file=vars.json -var 'root_password=$(pass Anton/root_password)' template-openwrt.json
+packer build -var-file=vars.json -var "root_password=$(pass Anton/root_password)" template-openwrt.json
 ```
 
 [Packer]: https://www.packer.io/
