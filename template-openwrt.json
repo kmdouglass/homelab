@@ -24,6 +24,7 @@
       ],
       "boot_wait": "20s",
       "disk_image": true,
+      "disk_size": 4096,
       "format": "raw",
       "iso_checksum": "91e5cdc049b8be250e57e9deb1fecb29f60abccfe09b99a537fcc95398fb3ff7",
       "iso_checksum_type": "sha256",
