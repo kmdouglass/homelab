@@ -21,7 +21,6 @@ uci set network.wan6.proto=dhcpv6
 uci set network.wan6.ifname="${WAN_IFNAME}"
 uci commit
 
-
 # /etc/hosts
 printf "\n192.168.1.1 %s %s %s\n" \
        "${HOSTNAME}.${DOMAIN}" "${HOSTNAME}" "${HOSTNAME_ALIASES}" >> /etc/hosts
@@ -34,3 +33,9 @@ chmod 600 /etc/dropbear/authorized_keys
 uci set dropbear.@dropbear[0].PasswordAuth="off"
 uci set dropbear.@dropbear[0].RootPasswordAuth="off"
 uci commit dropbear
+
+# Install Opkg packages, such as firmware for wireless cards
+opkg update
+opkg install \
+     ath9k-htc-firmware \
+     kmod-ath9k

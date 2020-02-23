@@ -58,11 +58,11 @@
     },
     {
       "environment_vars": [
-	"DOMAIN={{user `domain`}}",
-	"HOSTNAME={{user `hostname`}}",
-	"HOSTNAME_ALIASES={{user `hostname_aliases`}}",
-	"ROOT_PASSWORD={{user `root_password`}}",
-	"WAN_IFNAME={{user `wan_ifname`}}"
+        "DOMAIN={{user `domain`}}",
+        "HOSTNAME={{user `hostname`}}",
+        "HOSTNAME_ALIASES={{user `hostname_aliases`}}",
+        "ROOT_PASSWORD={{user `root_password`}}",
+        "WAN_IFNAME={{user `wan_ifname`}}"
       ],
       "script": "scripts/setup_root_account.sh",
       "type": "shell"
