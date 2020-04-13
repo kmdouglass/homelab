@@ -37,5 +37,6 @@ uci commit dropbear
 # Install Opkg packages, such as firmware for wireless cards
 opkg update
 opkg install \
-     ath9k-htc-firmware \
-     kmod-ath9k
+     ath9k-htc-firmware \ # Atheros firmware
+     kmod-ath9k \         # Atheros kernel module
+     wpad                 # WPA2-PSK supplicant
