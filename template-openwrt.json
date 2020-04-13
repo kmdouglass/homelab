@@ -5,7 +5,7 @@
     "filesystem": "ext4",
     "lan_ifname": "eth1",
     "name_extension": "final",
-    "version": "18.06.4"
+    "version": "19.07.2"
   },
   "builders":
   [
@@ -26,7 +26,7 @@
       "disk_image": true,
       "disk_size": 4096,
       "format": "raw",
-      "iso_checksum": "91e5cdc049b8be250e57e9deb1fecb29f60abccfe09b99a537fcc95398fb3ff7",
+      "iso_checksum": "87156fcc2f4f3c19829eae954885806472f7bed7ba8f094c1275279954fecb08",
       "iso_checksum_type": "sha256",
       "iso_url": "https://downloads.openwrt.org/releases/{{user `version`}}/targets/{{user `arch_1`}}/{{user `arch_2`}}/openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-combined-{{user `filesystem`}}.img.gz",
       "output_directory": "target/{{user `version`}}/{{user `arch`}}",
@@ -64,7 +64,7 @@
         "ROOT_PASSWORD={{user `root_password`}}",
         "WAN_IFNAME={{user `wan_ifname`}}"
       ],
-      "script": "scripts/setup_root_account.sh",
+      "script": "scripts/setup.sh",
       "type": "shell"
     }
   ]
