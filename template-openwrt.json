@@ -3,7 +3,6 @@
     "arch_1": "x86",
     "arch_2": "64",
     "filesystem": "ext4",
-    "lan_ifname": "eth1",
     "name_extension": "final",
     "version": "19.07.2"
   },
@@ -13,13 +12,7 @@
       "accelerator": "kvm",
       "boot_command": [
         "<enter><wait>",
-	"ifdown lan<enter><wait>",
-        "uci del network.lan<enter><wait>",
-        "uci set network.lan=interface<enter><wait>",
-        "uci set network.lan.proto=dhcp<enter><wait>",
-        "uci set network.lan.ifname={{user `lan_ifname`}}<enter><wait>",
-        "uci commit<enter><wait>",
-        "ifup lan<enter><wait>",
+	"/etc/init.d/firewall stop<enter><wait>",
         "exit<enter>"
       ],
       "boot_wait": "20s",
@@ -33,12 +26,9 @@
       "qemuargs": [
 	[ "-display", "gtk"],
         [ "-m", "512M" ],
-	[ "-netdev", "user,id=lan0"],
-        [ "-device", "virtio-net,netdev=lan0" ],
-        [ "-netdev", "user,id=lan1,hostfwd=tcp::{{ .SSHHostPort}}-:22"],
+        [ "-device", "virtio-net" ],
         [ "-device", "virtio-net,netdev=lan1" ],
-	[ "-netdev", "user,id=lan2"],
-        [ "-device", "virtio-net,netdev=lan2" ]
+        [ "-netdev", "user,id=lan1,hostfwd=tcp::{{ .SSHHostPort}}-:22"]
       ],
       "shutdown_command": "poweroff",
       "ssh_password": "",
@@ -46,7 +36,7 @@
       "ssh_timeout": "10s",
       "ssh_username": "root",
       "type": "qemu",
-      "vm_name": "openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-{{user `filesystem`}}-combined-{{user `name_extension`}}.img"
+      "vm_name": "openwrt-{{user `version`}}-{{user `arch_1`}}-{{user `arch_2`}}-combined-{{user `filesystem`}}-{{user `name_extension`}}.img"
     }
   ],
   "provisioners":
@@ -61,11 +51,16 @@
         "DOMAIN={{user `domain`}}",
         "HOSTNAME={{user `hostname`}}",
         "HOSTNAME_ALIASES={{user `hostname_aliases`}}",
-        "ROOT_PASSWORD={{user `root_password`}}",
-        "WAN_IFNAME={{user `wan_ifname`}}"
+        "POST_FLASH_SCRIPTS_DIR={{user `post_flash_scripts_dir`}}",
+        "ROOT_PASSWORD={{user `root_password`}}"
       ],
-      "script": "scripts/setup.sh",
+      "script": "scripts/setup_pre_flash.sh",
       "type": "shell"
-    }
+    },
+    {
+      "type": "file",
+      "source": "scripts/setup_post_flash.sh",
+      "destination": "{{user `post_flash_scripts_dir`}}/setup_post_flash.sh"
+}
   ]
 }
