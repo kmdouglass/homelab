@@ -39,8 +39,8 @@ You may test the image before flashing it by launching it in a VM with QEMU:
 /usr/local/bin/qemu-system-x86_64 \
     -display gtk -m 512M \
     -device virtio-net \
-	-device virtio-net,netdev=lan1 -netdev user,id=lan1,hostfwd=tcp::2222-:22
-	-drive file=target/19.07.2/openwrt-19.07.2-x86-64-combined-ext4-final.img
+    -device virtio-net,netdev=lan1 -netdev user,id=lan1,hostfwd=tcp::2222-:22
+    -drive file=target/19.07.2/openwrt-19.07.2-x86-64-combined-ext4-final.img
 ```
 
 You may now login in through the VNC console.
@@ -100,7 +100,7 @@ command. Install the router in its final destination, connect port `eth0` to the
 ## References
 
 - [PC Engines]
-- [Open Wrt]
+- [OpenWrt]
 - [Running OpenWrt in QEMU]
 
 [Packer]: https://www.packer.io/
