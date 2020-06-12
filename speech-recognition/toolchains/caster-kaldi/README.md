@@ -1,7 +1,10 @@
 # Caster/Kaldi Speech Recognition Toolchain
 
 ## Use
-To build the container:
+
+### Application container
+
+To build the application container:
 
 ```console
 docker build -t caster .
@@ -10,7 +13,41 @@ docker build -t caster .
 Launch the container with the following command:
 
 ```console
-docker run --rm -t -e DISPLAY=$DISPLAY -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/snd --group-add audio caster
+docker run \
+       --rm -t \
+       -e DISPLAY=$DISPLAY \
+       -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       --device /dev/snd \
+       --group-add audio \
+       caster
+```
+
+### Development container
+
+When developing in containers, I assign group ownership of the source code files to a group called `developers`. The source code files are mounted into a folder inside the container with the same group ownership. The GID of this group must be supplied as a build argument when building the development container. If it is not supplied, then a default value will be provided, but its GID cannot be guaranteed to match the GID on the host.
+
+Run the following command to build the development container, replacing `$DEVELOPERS` with the group name of your choice:
+
+```console
+docker build -t caster:dev --build-arg DEVELOPERS_GID=$(getent group $DEVELOPERS | cut -d: -f3) --target dev .
+```
+
+You will still need to mount the caster source code directory and install the caster pip requirements inside the container. In the below command, the environment variable `CASTER_SRC_DIR` refers to the full path of the caster source code directory *on the host* and the environment variable `DEVELOPERS` refers to the group on the host that has read and write access to the source code directory (as explained above).
+
+```console
+docker run \
+       -it \
+       -e DISPLAY=$DISPLAY \
+       -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -v $CASTER_SRC_DIR:/home/caster/Caster \
+       --device /dev/snd \
+       --group-add audio \
+       --group-add $DEVELOPERS \
+       --name caster-dev \
+       caster:dev \
+       bash
 ```
 
 ## Notes
