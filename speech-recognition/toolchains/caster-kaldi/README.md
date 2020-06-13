@@ -26,11 +26,15 @@ docker run \
 
 Compiling the models takes time, so it is recommended to start and stop the same container so that the compiled models are persisted between sessions. To stop the container, use the command `docker stop caster`. To restart the container, use the command `docker start -i caster`.
 
+#### Container restarts
+
+You can have the docker daemon bring up the application container after system restarts by adding the `-d --restart always` arguments to the `docker run` command above.
+
 ### Development container
 
-When developing in containers, I assign group ownership of the source code files to a group called `developers`. The source code files are mounted into a folder inside the container with the same group ownership. The GID of this group must be supplied as a build argument when building the development container. If it is not supplied, then a default value will be provided, but its GID cannot be guaranteed to match the GID on the host.
+When developing in containers, I assign group ownership of the source code files to a group called `developers`. The source code files are mounted into a folder inside the container with the same group ownership. The GID of this group must be supplied as a build argument when building the development image. If it is not supplied, then a default value will be provided, but its GID cannot be guaranteed to match the GID on the host.
 
-Run the following command to build the development container, replacing `$DEVELOPERS` with the group name of your choice:
+Run the following command to build the development container, replacing `$DEVELOPERS` with the name of a group that can be used to share permissions between your host and the container:
 
 ```console
 docker build -t caster:dev --build-arg DEVELOPERS_GID=$(getent group $DEVELOPERS | cut -d: -f3) --target dev .
