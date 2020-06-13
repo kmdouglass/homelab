@@ -14,7 +14,7 @@ Launch the container with the following command:
 
 ```console
 docker run \
-       -it \
+       -t \
        -e DISPLAY=$DISPLAY \
        -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
