@@ -34,6 +34,7 @@ RUN apt-get install -y \
 # Caster runtime requirements
 RUN apt-get install -y \
     tk \
+    xclip \
     xdotool \
  && rm -rf /var/lib/apt/lists/*
 

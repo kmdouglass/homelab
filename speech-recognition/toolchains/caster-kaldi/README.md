@@ -154,7 +154,7 @@ ImportError: libtk8.6.so: cannot open shared object file: No such file or direct
 tk 8.6 needs to be present inside the container.
 
 ```
-apt-get install tk
+$ apt-get install tk
 ```
 
 ### Keyboard support is not implemented
@@ -223,4 +223,44 @@ Attach a TTY to the container by passing the `-t` flag to the `docker run` comma
 
 ```console
 $ docker run -t ...
+```
+
+### The clipboard fails for some grammars
+
+I received the following error when I tried to use the function command from the python grammar for the first time.
+
+```console
+Python: function
+ERROR:action.exec:Execution of Store() failed due to exception: 
+    Pyperclip could not find a copy/paste mechanism for your system.
+    For more information, please visit https://pyperclip.readthedocs.io/en/latest/index.html#not-implemented-error 
+Traceback (most recent call last):
+  File "/home/caster/.local/lib/python3.8/site-packages/dragonfly/actions/action_base.py", line 98, in execute
+    if self._execute(data) is False:
+  File "/home/caster/Caster/castervoice/lib/temporary.py", line 48, in _execute
+    _, orig = context.read_selected_without_altering_clipboard(False)
+  File "/home/caster/Caster/castervoice/lib/context.py", line 116, in read_selected_without_altering_clipboard
+    cb = Clipboard(from_system=True)
+  File "/home/caster/.local/lib/python3.8/site-packages/dragonfly/util/clipboard.py", line 101, in __init__
+    self.copy_from_system()
+  File "/home/caster/.local/lib/python3.8/site-packages/dragonfly/util/clipboard.py", line 121, in copy_from_system
+    self._content = self.get_system_text()
+  File "/home/caster/.local/lib/python3.8/site-packages/dragonfly/util/clipboard.py", line 68, in get_system_text
+    return pyperclip.paste()
+  File "/home/caster/.local/lib/python3.8/site-packages/pyperclip/__init__.py", line 640, in lazy_load_stub_paste
+    return paste()
+  File "/home/caster/.local/lib/python3.8/site-packages/pyperclip/__init__.py", line 303, in __call__
+    raise PyperclipException(EXCEPT_MSG)
+pyperclip.PyperclipException: 
+    Pyperclip could not find a copy/paste mechanism for your system.
+    For more information, please visit https://pyperclip.readthedocs.io/en/latest/index.html#not-implemented-error 
+ERROR:action.exec:Execution failed: Store()+'def ():'+['left:3']+Retrieve()
+```
+
+#### Solution
+
+Install the `xclip` runtime dependency of Pyperclip.
+
+```console
+$ apt-get install xclip
 ```
