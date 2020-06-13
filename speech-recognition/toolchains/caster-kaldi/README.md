@@ -14,14 +14,17 @@ Launch the container with the following command:
 
 ```console
 docker run \
-       --rm -t \
+       -it \
        -e DISPLAY=$DISPLAY \
        -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        --device /dev/snd \
        --group-add audio \
+       --name caster \
        caster
 ```
+
+Compiling the models takes time, so it is recommended to start and stop the same container so that the compiled models are persisted between sessions. To stop the container, use the command `docker stop caster`. To restart the container, use the command `docker start -i caster`.
 
 ### Development container
 
