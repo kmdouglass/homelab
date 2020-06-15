@@ -18,13 +18,16 @@ docker run \
        -e DISPLAY=$DISPLAY \
        -e XDG_SESSION_TYPE=$XDG_SESSION_TYPE \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -v $CASTER_USER_DIR:/home/caster/.local/share/caster \
        --device /dev/snd \
        --group-add audio \
        --name caster \
        caster
 ```
 
-Compiling the models takes time, so it is recommended to start and stop the same container so that the compiled models are persisted between sessions. To stop the container, use the command `docker stop caster`. To restart the container, use the command `docker start -i caster`.
+The container will mount [a Caster user directory](https://caster.readthedocs.io/en/latest/readthedocs/User_Dir/Caster_User_Dir/) that is stored on the host at `$CASTER_USER_DIR`. This allows you to easily modify rules, settings, etc. without having to rebuild the image.
+
+Compiling the models takes time, so it is recommended to start and stop the same container so that the compiled models are persisted between sessions. To stop the container, use the command `docker stop caster`. To restart the container, use the command `docker start caster`.
 
 #### Container restarts
 
