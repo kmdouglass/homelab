@@ -38,7 +38,7 @@ Compiling the models takes time, so it is recommended to start and stop the same
 - **-v $CASTER_USER_DIR:/home/caster/.local/share/caster** - Mount the caster user directory from the host into the container
 - **--device /dev/snd** - Add the `snd` device file to the container so that the container can access the sound card
 - **--group-add audio** - Add the container's user to the host's audio group so that the container can access the microphone
-- **--pid=host** - Use the container's PID name space so that the process ID of the current window can be determined from the data returned by `xprop`
+- **--pid=host** - Use the host's PID namespace so that the process ID of the current window can be determined from the data returned by `xprop`
 - **--name caster** - Assign the name `caster` to the container
 
 #### Container restarts
