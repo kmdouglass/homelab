@@ -21,6 +21,7 @@ docker run \
        -v $CASTER_USER_DIR:/home/caster/.local/share/caster \
        --device /dev/snd \
        --group-add audio \
+       --pid=host \
        --name caster \
        caster
 ```
@@ -28,6 +29,17 @@ docker run \
 The container will mount [a Caster user directory](https://caster.readthedocs.io/en/latest/readthedocs/User_Dir/Caster_User_Dir/) that is stored on the host at `$CASTER_USER_DIR`. This allows you to easily modify rules, settings, etc. without having to rebuild the image.
 
 Compiling the models takes time, so it is recommended to start and stop the same container so that the compiled models are persisted between sessions. To stop the container, use the command `docker stop caster`. To restart the container, use the command `docker start caster`.
+
+#### Arguments
+
+- **-t** - Attach a TTY device so that print messages appear in the container logs
+- **-e DISPLAY=$DISPLAY** - Share the environment variable that contains the current X11 display with the container
+- **-e XDG_SESSION_TYPE=$XDG_SESSION_TYPE** - This environment variable is used by Dragonfly when determining which keyboard implementation to use
+- **-v $CASTER_USER_DIR:/home/caster/.local/share/caster** - Mount the caster user directory from the host into the container
+- **--device /dev/snd** - Add the `snd` device file to the container so that the container can access the sound card
+- **--group-add audio** - Add the container's user to the host's audio group so that the container can access the microphone
+- **--pid=host** - Use the container's PID name space so that the process ID of the current window can be determined from the data returned by `xprop`
+- **--name caster** - Assign the name `caster` to the container
 
 #### Container restarts
 
@@ -55,6 +67,7 @@ docker run \
        --device /dev/snd \
        --group-add audio \
        --group-add $DEVELOPERS \
+       --pid=host \
        --name caster-dev \
        caster:dev \
        bash
