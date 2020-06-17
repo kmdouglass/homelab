@@ -9,24 +9,28 @@ from castervoice.lib.merge.state.short import R
 
 class EmacsRule(MappingRule):
     mapping = {
+        "oops": R(Key("c-underscore")),
+        # Files
         "open file": R(Key("c-x, c-f")),
         "save file": R(Key("c-x, c-s")),
         "save as": R(Key("c-x, c-w")),
         "save all": R(Key("c-x, s")),
         "revert to file": R(Key("c-x, c-v")),
+        # Buffers
         "revert buffer": R(Key("a-x")),
         "close buffer": R(Key("c-x, k")),
-        "undo": R(Key("c-underscore")),
+        "switch buffer": R(Key("c-x, b")),
+        # Selections and editing
         "cancel selection": R(Key("c-g")),
         "begin selection": R(Key("c-space")),
         "cut selection": R(Key("c-w")),
         "paste": R(Key("c-y")),
         "copy": R(Key("a-w")),
         "paste number <n>": R(Key("c-x, r, i, %(n)d")),
-        # delete
         "forward delete": R(Key("c-delete")),
         "delete word": R(Key("a-delete")),
         "forward delete word": R(Key("a-d")),
+        # Navigation
         "word forward": R(Key("a-f")),
         "word backward": R(Key("a-b")),
         "line forward": R(Key("c-e")),
