@@ -44,7 +44,7 @@ class EmacsRule(MappingRule):
         "incremental search": R(Key("c-s")),
         "incremental reverse": R(Key("c-r")),
         "interactive search": R(Key("a-percent")),
-        "go to line <n>": R(Key("a-x, %(n)d")),
+        "go to line <n>": R(Key("a-g, a-g")),
         "prior bracket": R(Key("escape:down, c-b, escape:up")),
         "next bracket": R(Key("escape:down, c-f, escape:up")),
     }
