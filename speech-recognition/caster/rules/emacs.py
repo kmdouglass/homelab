@@ -9,7 +9,6 @@ from castervoice.lib.merge.state.short import R
 
 class EmacsRule(MappingRule):
     mapping = {
-        "oops": R(Key("c-underscore")),
         # Files
         "open file": R(Key("c-x, c-f")),
         "save file": R(Key("c-x, c-s")),
@@ -26,6 +25,7 @@ class EmacsRule(MappingRule):
         "split horizontal": R(Key("c-x, 2")),
         "split vertical": R(Key("c-x, 3")),
         # Selections and editing
+        "oops": R(Key("c-underscore")),
         "cancel selection": R(Key("c-g")),
         "begin selection": R(Key("c-space")),
         "cut selection": R(Key("c-w")),
