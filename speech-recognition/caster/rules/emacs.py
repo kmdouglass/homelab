@@ -20,6 +20,11 @@ class EmacsRule(MappingRule):
         "revert buffer": R(Key("a-x")),
         "close buffer": R(Key("c-x, k")),
         "switch buffer": R(Key("c-x, b")),
+        "move buffer": R(Key("c-x, o")),
+        "split out": R(Key("c-x, 0")),
+        "split restore": R(Key("c-x, 1")),
+        "split horizontal": R(Key("c-x, 2")),
+        "split vertical": R(Key("c-x, 3")),
         # Selections and editing
         "cancel selection": R(Key("c-g")),
         "begin selection": R(Key("c-space")),
