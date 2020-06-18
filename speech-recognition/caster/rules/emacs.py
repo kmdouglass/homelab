@@ -37,6 +37,8 @@ class EmacsRule(MappingRule):
         "line backward": R(Key("c-a")),
         "paragraph forward": R(Key("a-lbrace")),
         "paragraph backward": R(Key("a-rbrace")),
+        "page forward": R(Key("c-v")),
+        "page backward": R(Key("a-v")),
         "document forward": R(Key("a-langle")),
         "document backward": R(Key("a-rangle")),
         "C function forward": R(Key("ac-a")),
