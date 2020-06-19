@@ -1,6 +1,6 @@
 from dragonfly import Dictation, MappingRule
 
-from castervoice.lib.actions import Key
+from castervoice.lib.actions import Key, Text
 
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 from castervoice.lib.merge.additions import IntegerRefST
@@ -17,7 +17,7 @@ class EmacsRule(MappingRule):
         "save all": R(Key("c-x, s")),
         "revert to file": R(Key("c-x, c-v")),
         # Buffers
-        "revert buffer": R(Key("a-x")),
+        "revert buffer": R(Key("a-x") + Text("revert-buffer")),
         "close buffer": R(Key("c-x, k")),
         "switch buffer": R(Key("c-x, b")),
         "move buffer": R(Key("c-x, o")),
@@ -51,7 +51,7 @@ class EmacsRule(MappingRule):
         "C function backward": R(Key("ac-e")),
         "incremental search": R(Key("c-s")),
         "incremental reverse": R(Key("c-r")),
-        "interactive search": R(Key("a-percent")),
+        "query replace": R(Key("a-percent")),
         "go to line <n>": R(Key("a-g, a-g")),
         "prior bracket": R(Key("escape:down, c-b, escape:up")),
         "next bracket": R(Key("escape:down, c-f, escape:up")),
