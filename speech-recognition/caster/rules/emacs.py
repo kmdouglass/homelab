@@ -33,7 +33,7 @@ class EmacsRule(MappingRule):
         "copy": R(Key("a-w")),
         "paste number <n>": R(Key("c-x, r, i, %(n)d")),
         "forward delete": R(Key("c-delete")),
-        "delete word": R(Key("a-delete")),
+        "delete word": R(Key("a-backspace")),
         "forward delete word": R(Key("a-d")),
         # Navigation
         "word forward": R(Key("a-f")),
