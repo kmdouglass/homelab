@@ -75,6 +75,11 @@ docker run \
 
 ## Notes
 
+### StartApp fails to find an application
+
+Dragonfly's StartApp action searches the file system of the container for executables. It therefore cannot find executable files that are located on the host file system.
+
+
 ### Error when querying the microphone
 
 The following error appears when lanuchingg dragonfly: `sounddevice.PortAudioError: Error querying device -1`:

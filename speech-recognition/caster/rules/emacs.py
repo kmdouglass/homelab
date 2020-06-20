@@ -36,6 +36,7 @@ class EmacsRule(MappingRule):
         "forward delete": R(Key("c-delete")),
         "delete word": R(Key("a-backspace")),
         "forward delete word": R(Key("a-d")),
+        "fill paragraph": R(Key("a-q")),
         # Navigation
         "word forward": R(Key("a-f")),
         "word backward": R(Key("a-b")),
