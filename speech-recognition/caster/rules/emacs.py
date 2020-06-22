@@ -10,6 +10,8 @@ from castervoice.lib.merge.state.short import R
 class EmacsRule(MappingRule):
     mapping = {
         "quit e max": R(Key("c-x, c-c")),
+        "execute command": R(Key("a-x")),
+        "execute shell command": R(Key("a-!")),
         # Files
         "open file": R(Key("c-x, c-f")),
         "save file": R(Key("c-x, c-s")),
