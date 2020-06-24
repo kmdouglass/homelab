@@ -58,6 +58,8 @@ class EmacsRule(MappingRule):
         "go to line <n>": R(Key("a-g, a-g")),
         "prior bracket": R(Key("escape:down, c-b, escape:up")),
         "next bracket": R(Key("escape:down, c-f, escape:up")),
+        # Modes
+        "dired": R(Key("c-x, d")),
     }
     extras = [
         Dictation("text"),
