@@ -60,6 +60,11 @@ class EmacsRule(MappingRule):
         "next bracket": R(Key("escape:down, c-f, escape:up")),
         # Modes
         "dired": R(Key("c-x, d")),
+        # Help
+        "help me apropos": R(Key("c-h, a")),
+        "help me key press": R(Key("c-h, k")),
+        "help me function": R(Key("c-h, f")),
+        "help me variable": R(Key("c-h, v")),
     }
     extras = [
         Dictation("text"),
