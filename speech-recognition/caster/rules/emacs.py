@@ -1,4 +1,4 @@
-from dragonfly import Dictation, MappingRule
+from dragonfly import Choice, Dictation, MappingRule
 
 from castervoice.lib.actions import Key, Text
 
@@ -61,14 +61,20 @@ class EmacsRule(MappingRule):
         # Modes
         "dired": R(Key("c-x, d")),
         # Help
-        "help me apropos": R(Key("c-h, a")),
-        "help me key press": R(Key("c-h, k")),
-        "help me function": R(Key("c-h, f")),
-        "help me variable": R(Key("c-h, v")),
+        "help me <help_item>": R(Key("c-h") + Key("%(help_item)s")),
         # elisp
         "eval sim": R(Key("c-x, c-e")),
     }
     extras = [
+        Choice(
+            "help_item",
+            {
+                "apropos": "a",
+                "key press": "k",
+                "function": "f",
+                "variable": "v"
+            }
+        ),
         Dictation("text"),
         Dictation("mim"),
         IntegerRefST("n", 1, 1000),
