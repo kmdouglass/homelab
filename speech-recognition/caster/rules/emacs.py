@@ -65,6 +65,8 @@ class EmacsRule(MappingRule):
         "help me key press": R(Key("c-h, k")),
         "help me function": R(Key("c-h, f")),
         "help me variable": R(Key("c-h, v")),
+        # elisp
+        "eval sim": R(Key("c-x, c-e")),
     }
     extras = [
         Dictation("text"),
