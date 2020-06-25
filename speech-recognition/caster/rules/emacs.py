@@ -59,7 +59,7 @@ class EmacsRule(MappingRule):
         "prior bracket": R(Key("escape:down, c-b, escape:up")),
         "next bracket": R(Key("escape:down, c-f, escape:up")),
         # Modes
-        "dired": R(Key("c-x, d")),
+        "dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
         # Help
         "help me <help_item>": R(Key("c-h") + Key("%(help_item)s")),
         # elisp
