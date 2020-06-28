@@ -61,6 +61,14 @@ class EmacsRule(MappingRule):
         # Modes
         "dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
         "maj it": R(Key("c-x, g"), rdescript="Launch magit"),
+        "python deactivate": R(
+            Key("a-x") + Text("pyvenv-deactivate") + Key("enter"),
+            rdescript="Deactivate a Python virtual environment"
+        ),
+        "python work on": R(
+            Key("a-x") + Text("pyvenv-workon") + Key("enter"),
+            rdescript="Activate a Python virtual environment"
+        ),
     }
     extras = [
         Choice(
