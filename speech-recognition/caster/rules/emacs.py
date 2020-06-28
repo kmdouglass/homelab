@@ -33,8 +33,8 @@ class EmacsRule(MappingRule):
         "selection copy": R(Key("a-w")),
         "paste": R(Key("c-y")),
         "paste number <n>": R(Key("c-x, r, i, %(n)d")),
-        "delete word forward": R(Key("a-d")),
-        "delete word backward": R(Key("a-backspace")),
+        "word delete forward": R(Key("a-d")),
+        "word delete backward": R(Key("a-backspace")),
         "paragraph wrap": R(Key("a-q")),
         "paragraph unwrap": R(Key("a-x") + Text("unfill-paragraph") + Key("enter")),
         # Navigation
