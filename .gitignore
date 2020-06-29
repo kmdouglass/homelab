@@ -3,6 +3,5 @@ router/packer_cache
 router/target
 
 speech-recognition/caster/data
-speech-recognition/caster/settings
 
 __pycache__/

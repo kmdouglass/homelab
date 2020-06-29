@@ -1,0 +1,133 @@
+[Tree_Node_Path]
+SM_CSS_TREE_PATH = "/home/caster/.local/share/caster/data/sm_css_tree.toml"
+
+[engine]
+default_engine_mode = false
+default_mic = false
+engine_mode = "normal"
+mic_mode = "on"
+
+[formats]
+[formats."C plus plus"]
+secondary_format = [2, 1]
+text_format = [3, 1]
+
+[formats."C sharp"]
+secondary_format = [2, 1]
+text_format = [3, 1]
+
+[formats.Dart]
+secondary_format = [2, 1]
+text_format = [3, 1]
+
+[formats.HTML]
+secondary_format = [5, 2]
+text_format = [5, 0]
+
+[formats.Java]
+secondary_format = [2, 1]
+text_format = [3, 1]
+
+[formats.Javascript]
+secondary_format = [2, 1]
+text_format = [3, 1]
+
+[formats.Python]
+secondary_format = [2, 1]
+text_format = [5, 3]
+
+[formats.Rust]
+secondary_format = [2, 1]
+text_format = [5, 3]
+
+[formats._default]
+secondary_format = [1, 0]
+text_format = [5, 0]
+
+[formats.matlab]
+secondary_format = [1, 3]
+text_format = [3, 1]
+
+[formats.sequel]
+secondary_format = [1, 3]
+text_format = [5, 3]
+
+[gitbash]
+fetching_time = 3
+loading_time = 5
+
+[grammar_reloading]
+reload_timer_seconds = 5
+reload_trigger = "timer"
+
+[hooks]
+default_hooks = ["PrinterHook"]
+
+[miscellaneous]
+atom_palette_wait = 30
+ccr_on = true
+dev_commands = true
+dragonfly_pause_default = 0.003
+history_playback_delay_secs = 1.0
+hmc = true
+integer_remap_crash_fix = false
+integer_remap_opt_in = false
+keypress_wait = 50
+legion_downscale_factor = "auto"
+legion_vertical_columns = 30
+max_ccr_repetitions = 16
+print_rdescripts = true
+short_integer_opt_out = false
+use_aenea = false
+
+[online]
+last_update_date = "2020-06-28"
+online_mode = true
+update_interval = 7
+
+[paths]
+AHK_PATH = "/home/caster/Caster/castervoice"
+BASE_PATH = "/home/caster/Caster/castervoice"
+COMPANION_CONFIG_PATH = "/home/caster/.local/share/caster/settings/companion_config.toml"
+CONFIGDEBUGTXT_PATH = "/home/caster/.local/share/caster/data/configdebug.txt"
+DLL_PATH = "/home/caster/Caster/castervoice/lib/dll"
+DOUGLAS_PATH = "/home/caster/Caster/castervoice/asynch/mouse/grids.py"
+ENGINE_PATH = ""
+GDEF_FILE = "/home/caster/.local/share/caster/transformers/words.txt"
+GIT_REPO_LOCAL_REMOTE_DEFAULT_PATH = "/home/caster/Caster/castervoice/bin/share/git_repo_local_to_remote_match.toml.defaults"
+GIT_REPO_LOCAL_REMOTE_PATH = "/home/caster/.local/share/caster/settings/git_repo_local_to_remote_match.toml"
+HOMUNCULUS_PATH = "/home/caster/Caster/castervoice/asynch/hmc/h_launch.py"
+HOOKS_CONFIG_PATH = "/home/caster/.local/share/caster/settings/hooks.toml"
+LEGION_PATH = "/home/caster/Caster/castervoice/asynch/mouse/legion.py"
+LOG_PATH = "/home/caster/.local/share/caster/log.txt"
+MEDIA_PATH = "/home/caster/Caster/castervoice/bin/media"
+PYTHONW = "/usr/local/bin/python"
+RAINBOW_PATH = "/home/caster/Caster/castervoice/asynch/mouse/grids.py"
+REBOOT_PATH = "/home/caster/Caster/castervoice/bin/reboot.bat"
+REBOOT_PATH_WSR = "/home/caster/Caster/castervoice/bin/reboot_wsr.bat"
+REMOTE_DEBUGGER_PATH = "."
+RULES_CONFIG_PATH = "/home/caster/.local/share/caster/settings/rules.toml"
+SAVED_CLIPBOARD_PATH = "/home/caster/.local/share/caster/data/clipboard.json"
+SETTINGS_WINDOW_PATH = "/home/caster/Caster/castervoice/asynch/settingswindow.py"
+SIKULI_IDE = "."
+SIKULI_RUNNER = "."
+SIKULI_SCRIPTS_PATH = "/home/caster/.local/share/caster/sikuli"
+SIKULI_SERVER_PATH = "/home/caster/Caster/castervoice/asynch/sikuli/server/xmlrpc_server.sikuli"
+SM_ALIAS_PATH = "/home/caster/.local/share/caster/data/sm_aliases.toml"
+SM_BRINGME_PATH = "/home/caster/.local/share/caster/settings/sm_bringme.toml"
+SM_CHAIN_ALIAS_PATH = "/home/caster/.local/share/caster/data/sm_chain_aliases.toml"
+SM_HISTORY_PATH = "/home/caster/.local/share/caster/data/sm_history.toml"
+SUDOKU_PATH = "/home/caster/Caster/castervoice/asynch/mouse/grids.py"
+TERMINAL_PATH = "."
+TRANSFORMERS_CONFIG_PATH = "/home/caster/.local/share/caster/settings/transformers.toml"
+USER_DIR = "/home/caster/.local/share/caster"
+WSR_PATH = "/home/caster/Caster/castervoice/C:/Windows/Speech/Common/sapisvr.exe"
+
+[python]
+automatic_settings = true
+pip = "pip"
+version = "python"
+
+[sikuli]
+enabled = false
+version = ""

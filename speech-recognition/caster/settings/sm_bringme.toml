@@ -1,0 +1,38 @@
+[file]
+"caster alias file" = "/home/caster/.local/share/caster/data/sm_aliases.toml"
+"caster bring me file" = "/home/caster/.local/share/caster/settings/sm_bringme.toml"
+"caster chain aliases file" = "/home/caster/.local/share/caster/data/sm_chain_aliases.toml"
+"caster clipboard file" = "/home/caster/.local/share/caster/data/clipboard.json"
+"caster companion file" = "/home/caster/.local/share/caster/settings/companion_config.toml"
+"caster hooks file" = "/home/caster/.local/share/caster/settings/hooks.toml"
+"caster log file" = "/home/caster/.local/share/caster/log.txt"
+"caster record from history file" = "/home/caster/.local/share/caster/data/sm_history.toml"
+"caster rules file" = "/home/caster/.local/share/caster/settings/rules.toml"
+"caster settings file" = "/home/caster/.local/share/caster/settings/settings.toml"
+"caster transformer file" = "/home/caster/.local/share/caster/transformers/words.txt"
+"caster transformers file" = "/home/caster/.local/share/caster/settings/transformers.toml"
+
+[folder]
+"caster data" = "/home/caster/.local/share/caster/data"
+"caster hooks" = "/home/caster/.local/share/caster/hooks"
+"caster rules" = "/home/caster/.local/share/caster/rules"
+"caster settings" = "/home/caster/.local/share/caster/settings"
+"caster source" = "/home/caster/Caster"
+"caster transformers" = "/home/caster/.local/share/caster/transformers"
+"caster user" = "/home/caster/.local/share/caster"
+"libraries | home" = "/home/caster"
+"my documents" = "/home/caster/Documents"
+"my pictures" = "/home/caster/Pictures"
+"sick you lee" = "/home/caster/.local/share/caster/sikuli"
+
+[program]
+notepad = "C:\\Windows\\notepad.exe"
+
+[website]
+"caster discord" = "https://discord.gg/9eAAsCJ"
+"caster documentation" = "https://caster.readthedocs.io/en/latest/"
+"caster gitter" = "https://gitter.im/dictation-toolbox/Caster"
+"dragonfly documentation" = "https://dragonfly2.readthedocs.io/en/latest/"
+"dragonfly gitter" = "https://gitter.im/dictation-toolbox/dragonfly"
+github = "https://github.com/"
+google = "https://www.google.com"
