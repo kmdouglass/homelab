@@ -1,3 +1,4 @@
 <<<ANY>>>
 deckle -> chimney
 deli -> munch
+lease -> leap
