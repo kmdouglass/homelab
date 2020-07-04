@@ -9,8 +9,9 @@ from castervoice.lib.merge.state.short import R
 class EmacsRule(MappingRule):
     mapping = {
         "e max quit": R(Key("c-x, c-c")),
-        "command execute": R(Key("a-x")),
-        "shell command execute": R(Key("a-!")),
+        "command execute e max": R(Key("a-x")),
+        "command execute shell": R(Key("a-!")),
+        "command execute lisp": R(Key("a-colon")),
         # Buffers
         "file open": R(Key("c-x, c-f")),
         "file save": R(Key("c-x, c-s")),
@@ -25,6 +26,7 @@ class EmacsRule(MappingRule):
         "pane expand": R(Key("c-x, 1")),
         "pane split horizontal": R(Key("c-x, 2")),
         "pane split vertical": R(Key("c-x, 3")),
+        "pane transpose": R(Key("c-c, t")),
         # Selections and editing
         "oops": R(Key("c-underscore")),
         "selection cancel": R(Key("c-g")),
@@ -59,8 +61,9 @@ class EmacsRule(MappingRule):
         # elisp
         "eval sim": R(Key("c-x, c-e")),
         # Modes
-        "dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
-        "maj it": R(Key("c-x, g"), rdescript="Launch magit"),
+        "mode dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
+        "mode docker": R(Key("c-c, d"), rdescript="Launch docker mode"),
+        "mode maj it": R(Key("c-x, g"), rdescript="Launch magit"),
         "python deactivate": R(
             Key("a-x") + Text("pyvenv-deactivate") + Key("enter"),
             rdescript="Deactivate a Python virtual environment"
