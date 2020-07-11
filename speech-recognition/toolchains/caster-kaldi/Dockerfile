@@ -8,10 +8,6 @@ RUN apt-get update \
     unzip \
     wget
 
-# Requirements to build libportaudio
-RUN apt-get install -y \
-    libasound-dev
-
 # Requirements to build wxpython
 # https://github.com/wxWidgets/Phoenix/blob/master/README.rst#prerequisites
 RUN apt-get install -y \
@@ -36,11 +32,15 @@ RUN apt-get install -y \
     tk \
     x11-utils \
     xclip \
-    xdotool \
+    xdotool
+
+# Requirements to build libportaudio
+RUN apt-get install -y \
+    libasound-dev \
  && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash caster
-WORKDIR /home/caster
+RUN mkdir -p /opt
+WORKDIR /opt
 
 # Build and install libportaudio
 COPY pa_linux_alsa.c.patch .
@@ -55,33 +55,55 @@ RUN git clone https://git.assembla.com/portaudio.git \
  && cd .. \
  && rm -rf portaudio pa_linux_alsa.c.patch
 
+###################################################################################################
 FROM base AS dev
 
-ARG DEVELOPERS_GID=1001
+RUN mkdir /opt/Caster
+WORKDIR /opt
 
-RUN addgroup --gid ${DEVELOPERS_GID} developers \
- && mkdir /home/caster/Caster \
- && chgrp -R developers /home/caster/Caster
+###################################################################################################
+FROM base AS app-alsa
 
-USER caster
-WORKDIR /home/caster/Caster
-
-FROM base AS app
-
-ARG CASTER_COMMIT=bd1f07cb04a3f288a597a8aed7f784ab99eba7fc
+ARG CASTER_COMMIT=576412fbc6fbaf31edbe76a873f6ac569c483046
 ARG KALDI_MODEL_URL=https://github.com/daanzu/kaldi-active-grammar/releases/download/v1.4.0/kaldi_model_daanzu_20200328_1ep-mediumlm.zip
-
-USER caster
 
 RUN git clone https://github.com/dictation-toolbox/Caster.git \
  && cd Caster \
  && git reset --hard ${CASTER_COMMIT} \
- && pip install --user -r requirements-mac-linux.txt \
- && pip install --user dragonfly2[kaldi]
+ && pip install -r requirements-mac-linux.txt \
+ && pip install dragonfly2[kaldi]
 
 RUN wget -q -O kaldi.zip ${KALDI_MODEL_URL} \
- && unzip kaldi.zip -d Caster \
+ && unzip kaldi.zip -d /opt \
  && rm kaldi.zip
 
-WORKDIR /home/caster/Caster
-ENTRYPOINT [ "python", "-m", "dragonfly", "load", "_*.py", "--engine", "kaldi", "--no-recobs-messages" ]
+# Grant full access to these directories because both Caster and Kaldi require that the user, which
+# is known only at container runtime, is capable of writing files to multiple locations within
+# these directories
+RUN mkdir \
+    /opt/appuser \
+    /opt/kaldi_model.tmp \
+ && chmod 777 -R \
+    /opt/appuser \
+    /opt/kaldi_model \
+    /opt/kaldi_model.tmp
+
+# Dragonfly requires that the HOME environment variable is set, but the container will be run as a
+# user that lacks a HOME directory
+ENV HOME=/opt/appuser
+
+WORKDIR /opt/Caster
+ENTRYPOINT [ "python", "-m", "dragonfly", "load", "_*.py", "--engine", "kaldi", "-o", "model_dir=/opt/kaldi_model,tmp_dir=/opt/kaldi_model.tmp", "--no-recobs-messages" ]
+
+###################################################################################################
+FROM app-alsa AS app-pulseaudio
+
+RUN apt-get update \
+ && apt-get install -y \
+    pulseaudio \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV HOME=/opt/appuser
+
+WORKDIR /opt/Caster
+ENTRYPOINT [ "python", "-m", "dragonfly", "load", "_*.py", "--engine", "kaldi", "-o", "model_dir=/opt/kaldi_model,tmp_dir=/opt/kaldi_model.tmp", "--no-recobs-messages" ]
