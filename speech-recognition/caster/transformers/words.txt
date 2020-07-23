@@ -1,4 +1,5 @@
 <<<ANY>>>
 deckle -> chimney
 deli -> munch
+delta -> durango
 lease -> leap
