@@ -35,8 +35,8 @@ class EmacsRule(MappingRule):
         "selection copy": R(Key("a-w")),
         "paste": R(Key("c-y")),
         "paste number <n>": R(Key("c-x, r, i, %(n)d")),
-        "word delete forward": R(Key("a-d")),
-        "word delete backward": R(Key("a-backspace")),
+        "word delete forward [<n>]": R(Key("a-d:%(n)d")),
+        "word delete backward [<n>]": R(Key("a-backspace:%(n)d")),
         "paragraph wrap": R(Key("a-q")),
         "paragraph unwrap": R(Key("a-x") + Text("unfill-paragraph") + Key("enter")),
         # Navigation
@@ -50,8 +50,8 @@ class EmacsRule(MappingRule):
         "page backward": R(Key("a-v")),
         "file forward": R(Key("a-rangle")),
         "file backward": R(Key("a-langle")),
-        "search forward": R(Key("c-s")),
-        "search backward": R(Key("c-r")),
+        "search forward [<n>]": R(Key("c-s:%(n)d")),
+        "search backward [<n>]": R(Key("c-r:%(n)d")),
         "replace forward": R(Key("a-percent")),
         "go to line [<line_num>]": R(Key("a-g, a-g") + Text("%(line_num)s")),
         "bracket forward": R(Key("escape:down, c-f, escape:up")),
@@ -63,15 +63,8 @@ class EmacsRule(MappingRule):
         # Modes
         "mode dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
         "mode docker": R(Key("c-c, d"), rdescript="Launch docker mode"),
+        "mode language server": R(Key("a-x") + Text("lsp") + Key("enter")),
         "mode maj it": R(Key("c-x, g"), rdescript="Launch magit"),
-        "python deactivate": R(
-            Key("a-x") + Text("pyvenv-deactivate") + Key("enter"),
-            rdescript="Deactivate a Python virtual environment"
-        ),
-        "python work on": R(
-            Key("a-x") + Text("pyvenv-workon") + Key("enter"),
-            rdescript="Activate a Python virtual environment"
-        ),
     }
     extras = [
         Choice(
