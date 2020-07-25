@@ -65,17 +65,27 @@ WORKDIR /opt
 FROM base AS app-alsa
 
 ARG CASTER_COMMIT=576412fbc6fbaf31edbe76a873f6ac569c483046
+ARG DICTATION_MODE_COMMIT=29a6e7dda7c371cb4549286cdd62a00f00b1fec6
 ARG KALDI_MODEL_URL=https://github.com/daanzu/kaldi-active-grammar/releases/download/v1.4.0/kaldi_model_daanzu_20200328_1ep-mediumlm.zip
 
 RUN git clone https://github.com/dictation-toolbox/Caster.git \
  && cd Caster \
  && git reset --hard ${CASTER_COMMIT} \
  && pip install -r requirements-mac-linux.txt \
- && pip install dragonfly2[kaldi]
+ && pip install dragonfly2[kaldi] \
+ && cd ..
 
 RUN wget -q -O kaldi.zip ${KALDI_MODEL_URL} \
  && unzip kaldi.zip -d /opt \
  && rm kaldi.zip
+
+# Install tools for improving the use of dictation mode with the Kaldi engine
+RUN git clone https://github.com/Danesprite/dictation-mode-grammar.git \
+ && cd dictation-mode-grammar \
+ && git reset --hard ${DICTATION_MODE_COMMIT} \
+ && cp _dictation_mode.py text_dictation_formatting.py ../Caster \
+ && cd .. \
+ && rm -rf dictation-mode-grammar
 
 # Grant full access to these directories because both Caster and Kaldi require that the user, which
 # is known only at container runtime, is capable of writing files to multiple locations within
@@ -84,6 +94,7 @@ RUN mkdir \
     /opt/appuser \
     /opt/kaldi_model.tmp \
  && chmod 777 -R \
+    /opt/Caster \
     /opt/appuser \
     /opt/kaldi_model \
     /opt/kaldi_model.tmp
