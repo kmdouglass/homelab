@@ -62,6 +62,7 @@ class EmacsRule(MappingRule):
         "eval sim": R(Key("c-x, c-e")),
         # Modes
         "mode dear ed": R(Key("c-x, d"), rdescript="Launch dired"),
+        "mode deft": R(Key("a-x") + Text("deft") + Key("enter")),
         "mode docker": R(Key("c-c, d"), rdescript="Launch docker mode"),
         "mode language server": R(Key("a-x") + Text("lsp") + Key("enter")),
         "mode maj it": R(Key("c-x, g"), rdescript="Launch magit"),
