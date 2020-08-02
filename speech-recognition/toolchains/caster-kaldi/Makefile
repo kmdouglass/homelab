@@ -2,7 +2,7 @@ CONTAINER_NAME=caster
 IMAGE_NAME=caster
 
 build: Dockerfile
-	docker build -t caster .
+	docker build -t $(IMAGE_NAME) .
 
 build-dev: Dockerfile
 	docker build -t caster:dev --build-arg --target dev .
