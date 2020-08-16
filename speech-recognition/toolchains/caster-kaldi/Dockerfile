@@ -64,7 +64,7 @@ WORKDIR /opt
 ###################################################################################################
 FROM base AS app-alsa
 
-ARG CASTER_COMMIT=576412fbc6fbaf31edbe76a873f6ac569c483046
+ARG CASTER_COMMIT=37bb1c9f04acd1fd9fe7e14196098412a500aec6
 ARG DICTATION_MODE_COMMIT=29a6e7dda7c371cb4549286cdd62a00f00b1fec6
 ARG KALDI_MODEL_URL=https://github.com/daanzu/kaldi-active-grammar/releases/download/v1.4.0/kaldi_model_daanzu_20200328_1ep-mediumlm.zip
 
