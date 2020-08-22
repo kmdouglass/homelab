@@ -1,7 +1,13 @@
 { config, pkgs, lib, ... }:
+
+let
+  hostname = "rpi3";
+in
 {
   boot = {
     cleanTmpDir = true;
+    # There is a bug in NixOS that prohibits the use of kernel versions >= 5.7
+    # https://github.com/NixOS/nixpkgs/issues/82455#issuecomment-650654111
     kernelPackages = pkgs.linuxPackages_5_6;
     kernelParams = ["cma=256M"];
     loader.grub.enable = false;
@@ -12,6 +18,8 @@
       version = 3;
     };
   };
+
+  deployment.targetHost = hostname;
 
   documentation.nixos.enable = false;
 
@@ -26,16 +34,26 @@
     };
   };
 
-  networking.hostName = "rpi3";
+  networking.hostName = hostname;
 
-  openssh = {
-    enable = true;
-    allowSFTP = false;
-    passwordAuthentication = false;
+  nix = {
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+    };
   };
 
-  # Use 1GB of additional swap memory in order to not run out of memory
-  # when installing lots of things while running other things at the same time.
+  # Required to build on x86_64 machine
+  nixpkgs.system = "aarch64-linux";
+
+  services = {
+    openssh = {
+      enable = true;
+      allowSFTP = false;
+      passwordAuthentication = false;
+    };
+  };
+
   swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
   users = {

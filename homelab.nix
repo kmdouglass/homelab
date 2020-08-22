@@ -1,9 +1,7 @@
 {
-  deployment.targetHost = "rpi3";
-
   network.description = "Infrastructure for local.kponics.com";
 
-  rpi3 = { config, ...}: {
+  rpi3 = {
     imports = [
       ./servers/rpi3.nix
     ];
