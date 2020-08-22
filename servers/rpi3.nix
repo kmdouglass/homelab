@@ -28,11 +28,6 @@
 
   networking.hostName = "rpi3";
 
-  nix.gc = {
-    automatic = true;
-    gc.options = "--delete-older-than 30d";
-  };
-
   openssh = {
     enable = true;
     allowSFTP = false;
