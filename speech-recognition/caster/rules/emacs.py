@@ -67,10 +67,7 @@ class EmacsRule(MappingRule):
         "mode language server": R(Key("a-x") + Text("lsp") + Key("enter")),
         "mode maj it": R(Key("c-x, g"), rdescript="Launch magit"),
         # Org
-        "block execute": R(
-            Key("c-c, c-c") + Text("yes") + Key("enter"),
-            rdescript="Execute source block"
-        ),
+        "block execute": R(Key("c-c, c-c"), rdescript="Execute source block"),
         "heading left": R(Key("a-left")),
         "heading right": R(Key("a-right")),
         "heading new": R(Key("a-enter"), rdescript="Insert new heading at point"),
