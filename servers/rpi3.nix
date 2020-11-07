@@ -36,7 +36,7 @@ in
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 9090 ];
+      allowedTCPPorts = [ config.services.grafana.port 9090 ];
     };
     hostName = hostname;
   };
@@ -52,6 +52,12 @@ in
   nixpkgs.system = "aarch64-linux";
 
   services = {
+    grafana = {
+      enable = true;
+      addr = "0.0.0.0";
+      protocol = "http";
+      auth.anonymous.enable = true;
+    };
     openssh = {
       enable = true;
       allowSFTP = false;
