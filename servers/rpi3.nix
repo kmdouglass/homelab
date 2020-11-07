@@ -34,7 +34,12 @@ in
     };
   };
 
-  networking.hostName = hostname;
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 9090 ];
+    };
+    hostName = hostname;
+  };
 
   nix = {
     gc = {
@@ -51,6 +56,21 @@ in
       enable = true;
       allowSFTP = false;
       passwordAuthentication = false;
+    };
+    prometheus = {
+      enable = true;
+      scrapeConfigs = [
+        {
+          job_name = "prometheus";
+          static_configs = [
+            {
+              targets = [
+                "localhost:9090"
+              ];
+            }
+          ];
+        }
+      ];
     };
   };
 
