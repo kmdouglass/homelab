@@ -36,7 +36,10 @@ in
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ config.services.grafana.port 9090 ];
+      allowedTCPPorts = [
+        config.services.grafana.port
+        config.services.prometheus.exporters.node.port
+        9090 ];
     };
     hostName = hostname;
   };
@@ -89,7 +92,22 @@ in
             }
           ];
         }
+        {
+          job_name = "node";
+          static_configs = [
+            {
+              targets = [
+                "localhost:9100"
+              ];
+            }
+          ];
+        }
       ];
+
+      exporters.node = {
+        enable = true;
+        enabledCollectors = [ "cpu" "filesystem" "loadavg" "systemd" ];
+      };
     };
   };
 
