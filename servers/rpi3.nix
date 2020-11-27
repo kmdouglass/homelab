@@ -35,12 +35,6 @@ in
   };
 
   networking = {
-    firewall = {
-      allowedTCPPorts = [
-        config.services.grafana.port
-        config.services.prometheus.exporters.node.port
-        9090 ];
-    };
     hostName = hostname;
   };
 
@@ -55,59 +49,10 @@ in
   nixpkgs.system = "aarch64-linux";
 
   services = {
-    grafana = {
-      enable = true;
-      addr = "0.0.0.0";
-      protocol = "http";
-      auth.anonymous.enable = true;
-      auth.anonymous.org_role = "Editor";
-
-      provision = {
-        enable = true;
-        datasources = [
-          {
-            name = "Prometheus";
-            isDefault = true;
-            type = "prometheus";
-            url = "http://localhost:9090";
-          }
-        ];
-      };
-    };
     openssh = {
       enable = true;
       allowSFTP = false;
       passwordAuthentication = false;
-    };
-    prometheus = {
-      enable = true;
-      scrapeConfigs = [
-        {
-          job_name = "prometheus";
-          static_configs = [
-            {
-              targets = [
-                "localhost:9090"
-              ];
-            }
-          ];
-        }
-        {
-          job_name = "node";
-          static_configs = [
-            {
-              targets = [
-                "localhost:9100"
-              ];
-            }
-          ];
-        }
-      ];
-
-      exporters.node = {
-        enable = true;
-        enabledCollectors = [ "cpu" "filesystem" "loadavg" "systemd" ];
-      };
     };
   };
 
