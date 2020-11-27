@@ -48,7 +48,6 @@
     },
     {
       "environment_vars": [
-        "DOMAIN={{user `domain`}}",
         "HOSTNAME={{user `hostname`}}",
         "HOSTNAME_ALIASES={{user `hostname_aliases`}}",
         "POST_FLASH_SCRIPTS_DIR={{user `post_flash_scripts_dir`}}",
@@ -59,8 +58,13 @@
     },
     {
       "type": "file",
+      "source": "scripts/config.sh",
+      "destination": "{{user `post_flash_scripts_dir`}}/config.sh"
+    },
+    {
+      "type": "file",
       "source": "scripts/setup_post_flash.sh",
       "destination": "{{user `post_flash_scripts_dir`}}/setup_post_flash.sh"
-}
+    }
   ]
 }

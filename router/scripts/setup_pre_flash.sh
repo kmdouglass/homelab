@@ -8,9 +8,7 @@ uci set system.@system[0].ttylogin="1"
 uci set system.@system[0].hostname="${HOSTNAME}"
 
 # /etc/hosts
-printf "\n192.168.1.1 %s %s %s\n" \
-       "${HOSTNAME}.${DOMAIN}" "${HOSTNAME}" "${HOSTNAME_ALIASES}" >> /etc/hosts
-sed -i "/127.0.0.1 localhost/a127.0.1.1 ${HOSTNAME}.${DOMAIN} ${HOSTNAME}" /etc/hosts
+printf "\n192.168.1.1 %s %s\n" "${HOSTNAME}" "${HOSTNAME_ALIASES}" >> /etc/hosts
 
 # SSH
 chmod 700 /etc/dropbear/

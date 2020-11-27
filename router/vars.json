@@ -1,5 +1,4 @@
 {
-  "domain": "local.kponics.com",
   "hostname": "srv-20191014",
   "hostname_aliases": "router openwrt",
   "post_flash_scripts_dir": "/opt/setup",
