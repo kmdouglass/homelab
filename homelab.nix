@@ -1,5 +1,5 @@
 {
-  network.description = "Infrastructure for local.kponics.com";
+  network.description = "Infrastructure for kponics.lan";
 
   rpi3 = {
     imports = [
