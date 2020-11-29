@@ -64,9 +64,9 @@ WORKDIR /opt
 ###################################################################################################
 FROM base AS app-alsa
 
-ARG CASTER_COMMIT=37bb1c9f04acd1fd9fe7e14196098412a500aec6
+ARG CASTER_COMMIT=bae1978ebdccb6a9d79894aec91efb8ed70b2a5d
 ARG DICTATION_MODE_COMMIT=29a6e7dda7c371cb4549286cdd62a00f00b1fec6
-ARG KALDI_MODEL_URL=https://github.com/daanzu/kaldi-active-grammar/releases/download/v1.4.0/kaldi_model_daanzu_20200328_1ep-mediumlm.zip
+ARG KALDI_MODEL_URL=https://github.com/daanzu/kaldi-active-grammar/releases/download/v1.8.0/kaldi_model_daanzu_20200905_1ep-biglm.zip
 
 RUN git clone https://github.com/dictation-toolbox/Caster.git \
  && cd Caster \
