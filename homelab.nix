@@ -7,6 +7,7 @@
       ./modules/grafana.nix
       ./modules/node-exporter.nix
       ./modules/prometheus.nix
+      ./modules/traefik.nix
     ];
   };
 }

@@ -8,6 +8,8 @@
     protocol = "http";
     auth.anonymous.enable = true;
     auth.anonymous.org_role = "Editor";
+    domain = "grafana.kponics.lan";
+    rootUrl = "http://grafana.kponics.lan";
 
     provision = {
       enable = true;

@@ -19,6 +19,14 @@ uci set prometheus-node-exporter-lua.main.listen_interface='lan'
 uci set dhcp.@dnsmasq[0].local="/kponics.lan/"
 uci set dhcp.@dnsmasq[0].domain="kponics.lan"
 
+while uci -q get dhcp.@cname[0]; do
+    uci delete dhcp.@cname[0]
+done
+
+uci add dhcp cname
+uci set dhcp.@cname[-1].cname="grafana.kponics.lan"
+uci set dhcp.@cname[-1].target="rpi3.kponics.lan"
+
 # Restart services
 uci commit
 /etc/init.d/dnsmasq restart
