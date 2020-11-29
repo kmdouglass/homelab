@@ -6,10 +6,18 @@ in
 {
   boot = {
     cleanTmpDir = true;
-    # There is a bug in NixOS that prohibits the use of kernel versions >= 5.7
-    # https://github.com/NixOS/nixpkgs/issues/82455#issuecomment-650654111
-    kernelPackages = pkgs.linuxPackages_5_6;
-    kernelParams = ["cma=256M"];
+    extraModulePackages = [];
+    initrd = {
+      availableKernelModules = [
+        "bcm2835_dma"
+        "i2c_bcm2835"
+        "usbhid"
+        "vc4"
+      ];
+      kernelModules = [];
+    };
+    kernelParams = ["cma=32M"];
+    loader.generic-extlinux-compatible.enable = true;
     loader.grub.enable = false;
     loader.raspberryPi = {
       enable = true;
