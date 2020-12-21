@@ -46,7 +46,7 @@ ifup wan
 uci set wireless.radio0.country="CH"
 
 uci set wireless.@wifi-device[0].disabled=0;
-uci set wireless.@wifi-device[0].hwmode="11a"
+uci set wireless.@wifi-device[0].hwmode="11g"
 
 uci set wireless.@wifi-iface[0].device="radio0"
 uci set wireless.@wifi-iface[0].encryption='psk2'
