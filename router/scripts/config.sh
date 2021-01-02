@@ -31,6 +31,10 @@ uci add dhcp cname
 uci set dhcp.@cname[-1].cname="prometheus.kponics.lan"
 uci set dhcp.@cname[-1].target="rpi3.kponics.lan"
 
+uci add dhcp cname
+uci set dhcp.@cname[-1].cname="mqtt.kponics.lan"
+uci set dhcp.@cname[-1].target="rpi3.kponics.lan"
+
 # Restart services
 uci commit
 /etc/init.d/dnsmasq restart
