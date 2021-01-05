@@ -14,6 +14,8 @@ class TerminalRule(MappingRule):
         "line forward": R(Key("c-e"), rdescript="Line forward"),
         "line backward": R(Key("c-a"), rdescript="Line backward"),
         "search backward": R(Key("c-r"), rdescript="reverse-i-search"),
+        # Work-specific rules
+        "see dee picks for dee": R(Text("cd ~/src/pix4d") + Key("enter")),
     }
 
 
