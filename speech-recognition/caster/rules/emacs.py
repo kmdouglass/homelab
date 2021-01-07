@@ -71,6 +71,8 @@ class EmacsRule(MappingRule):
         "heading left": R(Key("a-left")),
         "heading right": R(Key("a-right")),
         "heading new": R(Key("a-enter"), rdescript="Insert new heading at point"),
+        # Magit
+        "maj it confirm": R(Key("c-c, c-c"), rdescript="Confirm Magit operation"),
         # Misc
         "fill column set": R(Key("a-x") + Text("set-fill-column") + Key("enter")),
     }
