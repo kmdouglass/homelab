@@ -21,6 +21,11 @@ class DesktopEnvironment(MappingRule):
             Key("alt:down, f2/25, alt:up") + Text("%(application)s") + Key("enter"),
             rdescript="Open %(application)s"
         ),
+        "toggle maxie": Key("a-f7"),
+        # Applications
+        "e max switch": Key("f7"),
+        "termie switch": Key("f8"),
+        "firefox switch": Key("f9"),
     }
 
     extras = [

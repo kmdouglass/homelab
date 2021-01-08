@@ -72,9 +72,9 @@ class EmacsRule(MappingRule):
         "heading right": R(Key("a-right")),
         "heading new": R(Key("a-enter"), rdescript="Insert new heading at point"),
         # Magit
-        "maj it confirm": R(Key("c-c, c-c"), rdescript="Confirm Magit operation"),
-        "maj it push": R(Key("P, p"), rdescript="Push to the remote"),
-        "maj it force push": R(Key("P, minus/200, F, p")),
+        "git confirm": R(Key("c-c, c-c"), rdescript="Confirm Magit operation"),
+        "git push": R(Key("P, p"), rdescript="Push to the remote"),
+        "git force push": R(Key("P, minus/200, F, p"), rdescript="Force push to the remote"),
         # Misc
         "fill column set": R(Key("a-x") + Text("set-fill-column") + Key("enter")),
     }
