@@ -1,4 +1,4 @@
-_enabled_ordered = ["Alphabet", "Navigation", "NavigationNon", "Numbers", "Punctuation", "Keyboard", "CasterRule", "HardwareRule", "MouseAlternativesRule", "WindowManagementRule", "DouglasGridRule", "RainbowGridRule", "SudokuGridRule", "HMCRule", "HMCConfirmRule", "HMCDirectoryRule", "HMCHistoryRule", "HMCLaunchRule", "HMCSettingsRule", "HistoryRule", "ChainAlias", "Alias", "BringRule", "Again", "GrammarActivatorRule", "HooksActivationRule", "TerminalRule", "DesktopEnvironment", "EmacsRule", "TmuxRule", "TransformersActivationRule", "FirefoxRule", "TextManipulation"]
+_enabled_ordered = ["Alphabet", "Navigation", "NavigationNon", "Numbers", "Punctuation", "Keyboard", "CasterRule", "HardwareRule", "MouseAlternativesRule", "WindowManagementRule", "DouglasGridRule", "RainbowGridRule", "SudokuGridRule", "HMCRule", "HMCConfirmRule", "HMCDirectoryRule", "HMCHistoryRule", "HMCLaunchRule", "HMCSettingsRule", "HistoryRule", "ChainAlias", "Alias", "BringRule", "Again", "GrammarActivatorRule", "HooksActivationRule", "TerminalRule", "DesktopEnvironment", "EmacsRule", "TmuxRule", "TransformersActivationRule", "FirefoxRule", "TextManipulation", "WorkEnvironment"]
 _internal = ["GrammarActivatorRule", "HooksActivationRule", "TransformersActivationRule", "ManualGrammarReloadRule"]
 
 [whitelisted]
@@ -101,3 +101,4 @@ fmanRule = true
 JiraRule = true
 CasterMicRule = false
 Keyboard = true
+WorkEnvironment = true

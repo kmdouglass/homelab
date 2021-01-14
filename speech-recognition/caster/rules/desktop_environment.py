@@ -2,7 +2,6 @@ from dragonfly import Choice, MappingRule
 
 from castervoice.lib.actions import Key, Text
 from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
-from castervoice.lib.merge.mergerule import MergeRule
 from castervoice.lib.merge.state.short import R
 
 
@@ -21,7 +20,7 @@ class DesktopEnvironment(MappingRule):
             Key("alt:down, f2/25, alt:up") + Text("%(application)s") + Key("enter"),
             rdescript="Open %(application)s"
         ),
-        "toggle maxie": Key("a-f7"),
+        "window maxie": Key("a-f7"),
         # Applications
         "e max switch": Key("f7"),
         "termie switch": Key("f8"),
