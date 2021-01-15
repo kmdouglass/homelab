@@ -75,6 +75,11 @@ class EmacsRule(MappingRule):
         "git confirm": R(Key("c-c, c-c"), rdescript="Confirm Magit operation"),
         "git push": R(Key("P, p"), rdescript="Push to the remote"),
         "git force push": R(Key("P, minus/200, F, p"), rdescript="Force push to the remote"),
+        "git pull": R(Key("F, p"), rdescript="Pull from the remote"),
+        "git ree base pull [<remote>]": R(
+            Key("F, minus/200, r, e") + Text("%(remote)s"),
+            rdescript="Pull and rebase on top of a remote",
+        ),
         # Misc
         "fill column set": R(Key("a-x") + Text("set-fill-column") + Key("enter")),
     }
@@ -88,10 +93,17 @@ class EmacsRule(MappingRule):
                 "variable": "v"
             }
         ),
+        Choice(
+            "remote",
+            {
+                "staging": "origin/staging",
+                "master": "origin/master",
+            },
+        ),
         IntegerRef("line_num", 1, 9999),
         IntegerRef("n", 1, 1000),
     ]
-    defaults = {"line_num": "", "n": 1}
+    defaults = {"line_num": "", "n": 1, "remote": "origin/staging"}
 
 
 def get_rule():
