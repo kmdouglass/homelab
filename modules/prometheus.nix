@@ -26,6 +26,16 @@
           }
         ];
       }
+      {
+        job_name = "telegraf";
+        static_configs = [
+          {
+            targets = [
+              "localhost:9273"
+            ];
+          }
+        ];
+      }
     ];
   };
 }
