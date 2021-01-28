@@ -1,4 +1,4 @@
-from dragonfly import Dictation, MappingRule
+from dragonfly import Choice, Dictation, MappingRule
 
 from castervoice.lib.actions import Key, Text
 
@@ -15,10 +15,21 @@ class TerminalRule(MappingRule):
         "line backward": R(Key("c-a"), rdescript="Line backward"),
         "search backward": R(Key("c-r"), rdescript="reverse-i-search"),
         "pseudo": Text("sudo "),
-        "see dee": Text("cd "),
+        "see dee [<where>]": Text("cd %(where)s"),
         # Work-specific rules
         "see dee picks for dee": R(Text("cd ~/src/pix4d") + Key("enter")),
     }
+
+    extras = [
+        Choice(
+            "where",
+            {
+                "up": "../"
+            }
+        ),
+    ]
+
+    defaults = {"where": ""}
 
 
 _executables = [
