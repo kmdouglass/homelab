@@ -13,6 +13,8 @@ class TerminalRule(MappingRule):
         "erase screen": R(Key("c-l"), rdescript="Clear the terminal screen"),
         "line forward": R(Key("c-e"), rdescript="Line forward"),
         "line backward": R(Key("c-a"), rdescript="Line backward"),
+        "list": R(Text("ls ")),
+        "make directory": R(Text("mkdir ")),
         "search backward": R(Key("c-r"), rdescript="reverse-i-search"),
         "pseudo": Text("sudo "),
         "see dee [<where>]": Text("cd %(where)s"),
