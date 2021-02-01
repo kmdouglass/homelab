@@ -82,7 +82,7 @@ short_integer_opt_out = false
 use_aenea = false
 
 [online]
-last_update_date = "2021-01-25"
+last_update_date = "2021-02-01"
 online_mode = true
 update_interval = 7
 

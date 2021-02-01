@@ -6,8 +6,9 @@ from castervoice.lib.ctrl.mgr.rule_details import RuleDetails
 
 class WorkEnvironment(MappingRule):
     mapping = {
-        "web gist [<size>]": Text("%(size)s"),
+        "gee see pee": Text("GCP"),
         "otto gee see pee": Text("AutoGCP"),
+        "web gist [<size>]": Text("%(size)s"),
     }
 
     extras = [
