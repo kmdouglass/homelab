@@ -21,11 +21,21 @@ class TerminalRule(MappingRule):
         "pseudo": Text("sudo "),
         "see dee [<where>]": Text("cd %(where)s"),
         "yikes": R(Key("c-c"), rdescript="Cancel the current command"),
+        # Docker
+        "dee see run [<docker_compose_run_options>]": Text(
+            "docker-compose run %(docker_compose_run_options)s"
+        ),
         # Work-specific rules
         "see dee picks for dee": R(Text("cd ~/src/pix4d") + Key("enter")),
     }
 
     extras = [
+        Choice(
+            "docker_compose_run_options",
+            {
+                "remove": "--rm ",
+            }
+        ),
         Choice(
             "where",
             {
@@ -35,12 +45,12 @@ class TerminalRule(MappingRule):
         Choice(
             "mode_flags",
             {
-                "exy": "+x",
+                "exy": "+x ",
             }
         ),
     ]
 
-    defaults = {"mode_flags": "", "where": ""}
+    defaults = {"docker_compose_run_options": "--rm ", "mode_flags": "", "where": ""}
 
 
 _executables = [
